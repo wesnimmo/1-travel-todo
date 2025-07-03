@@ -3,19 +3,21 @@ import Logo from "./Logo";
 import Form from "./Form";
 import PackingList from "./PackingList";
 import Stats from "./Stats";
+import type { Item } from "./Form";
+import { useLocalStorage } from "./useLocalStorage";
 
 export default function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useLocalStorage<Item[]>("items", []);
 
-  function handleAddItems(item) {
+  function handleAddItems(item: Item) {
     setItems((items) => [...items, item]);
   }
 
-  function handleDeleteItem(id) {
+  function handleDeleteItem(id: number) {
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
-  function handleToggleItem(id) {
+  function handleToggleItem(id: number) {
     setItems((items) =>
       items.map((item) =>
         item.id === id ? { ...item, packed: !item.packed } : item

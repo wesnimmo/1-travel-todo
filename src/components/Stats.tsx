@@ -1,6 +1,10 @@
+import type { Item } from "./Form";
 
+interface StatsProps {
+  items: Item[]
+}
 
-export default function Stats({ items }) {
+export default function Stats({ items }:  StatsProps) {
   if (!items.length)
     return (
       <p className="stats">
