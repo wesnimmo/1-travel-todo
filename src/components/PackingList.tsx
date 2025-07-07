@@ -7,6 +7,7 @@ interface PackingListProps {
   onDeleteItem: (id: number) => void;
   onToggleItem: (id: number) => void;
   onClearList: () => void;
+  onEditItem: (id: number, desc: string, quant: number) => void;
 }
 
 export default function PackingList({
@@ -14,6 +15,7 @@ export default function PackingList({
   onDeleteItem,
   onToggleItem,
   onClearList,
+  onEditItem
 }: PackingListProps) {
   const [sortBy, setSortBy] = useState<"input" | "description" | "packed">("input");
 
@@ -41,6 +43,7 @@ export default function PackingList({
             item={item}
             onDeleteItem={onDeleteItem}
             onToggleItem={onToggleItem}
+            onEditItem={(desc, quant) => onEditItem(item.id, desc, quant)}
             key={item.id}
           />
         ))}

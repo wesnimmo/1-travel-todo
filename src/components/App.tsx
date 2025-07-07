@@ -13,6 +13,15 @@ export default function App() {
     setItems((items) => [...items, item]);
   }
 
+  function handleEditItem(id: number, desc: string, quant: number ) {
+    setItems(items =>
+      items.map(item =>
+        item.id === id ? { ...item, description: desc, quantity: quant } : item
+      )
+    );
+  }
+
+
   function handleDeleteItem(id: number) {
     setItems((items) => items.filter((item) => item.id !== id));
   }
@@ -41,6 +50,7 @@ export default function App() {
         items={items}
         onDeleteItem={handleDeleteItem}
         onToggleItem={handleToggleItem}
+        onEditItem={handleEditItem}
         onClearList={handleClearList}
       />
       <Stats items={items} />
