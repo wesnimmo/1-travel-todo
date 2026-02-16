@@ -58,3 +58,22 @@ export function useLocalStorage<T>(key: string, defaultValue: T): [T, React.Disp
   return [value, setValue];
 }
 
+
+
+
+
+
+
+
+
+
+
+// feat(theme): persist currency and dark mode in localStorage
+
+// - Added generic useLocalStorage hook in /hooks for shared persistence
+// - Updated ThemeProvider to use useLocalStorage for isDarkMode and currency
+// - Ensured theme toggle also updates <html> class for dark mode
+// - Wrote tests for localStorage persistence of currency and theme
+//   (currency selection and light/dark toggle)
+// - All tests passing
+
